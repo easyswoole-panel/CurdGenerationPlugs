@@ -1,3 +1,67 @@
-<div class="layui-fluid" id="VIEW-apply" lay-title="标题">
-    内容
+<style type="text/css" media="all">
+    .layui-form-label{
+        width:130px;
+    }
+    .layui-input-block{
+        margin-left:180px;   
+    }
+</style>
+<div class="layui-fluid" id="VIEW-apply" lay-title="curd代码生成插件">
+    <div class="layui-row">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-form" action="">
+                <div class="layui-card-header">
+                    创建
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据表名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="table_name" required lay-verify="required" placeholder="请输入数据表名（需要在数据库中新建好）" autocomplete="off" class="layui-input"></div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">controller命名空间</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="controller_namespace" required lay-verify="required" placeholder="请输入，示例：\Api\User" autocomplete="off" class="layui-input"></div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">model命名空间</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="model_namespace" placeholder="请输入，示例：\User，可为空，则存放在Model根目录" autocomplete="off" class="layui-input"></div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                          <button class="layui-btn" lay-submit lay-filter="add">立即提交</button>
+                        </div>
+                      </div>
+  
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    layui.use(['form', 'admin'], function(){
+        let form = layui.form;
+        let admin = layui.admin;
+        
+        //监听提交
+        form.on('submit(add)', function(data){
+            admin.post({
+                url:"/curd-generation-plugs/create",
+                data:data.field,
+                success:function (res) {
+                    if (res.code === '200'){
+                        layer.msg("生成成功");
+                    }
+                }
+            });
+        
+            return false;
+        });
+    });
+</script>
