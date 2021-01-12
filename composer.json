@@ -1,7 +1,7 @@
 {
     "name":"siam/curd-generation-plugs",
     "type":"library",
-    "description":"EasySwoole Panel's Plugs",
+    "description":"EasySwoole Panel's Plugs for generation curd code",
     "keywords":["easyswoole panel", "easyswoole plugs"],
     "homepage":"",
     "license":"Apache-2.0",
@@ -10,6 +10,8 @@
         "email":"59419979@qq.com"
     }],
     "autoload":{
-    "psr-4":{}
-}
+        "psr-4":{
+            "Siam\\CurdGenerationPlugs\\":"src/"
+        }
+    }
 }
